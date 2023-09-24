@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use \App\Actions\CreateCategory;
-use \App\Actions\GetCategory;
+use \App\Http\Controllers\CategoryController;
 
 
 /*
@@ -23,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Create category
-Route::post('/categories', CreateCategory::class);
-// Get Category
-Route::get('/categories/{id}', GetCategory::class);
+Route::post('/categories', [CategoryController::class, 'store']);
+//// Get Category
+Route::get('/categories/{id}', [CategoryController::class, 'show']);
